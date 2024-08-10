@@ -15,7 +15,7 @@
 
 # 👖 SnapEnv template for Python package
 
-Awesome snap_package_template created by snapenv
+SnapEnv template for Python package.
 
 It was created having in mind SnapEnv people and what the most common use-cases would be. Following its structure you'll get into developing your next FastAPI server in no time!
 
