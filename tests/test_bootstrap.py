@@ -19,7 +19,7 @@ async def test_some_variable_to_test():
     """
     Test that `some_function` returns the expected string.
 
-    This asynchronous test checks whether the `some_function` from the 
+    This asynchronous test checks whether the `some_function` from the
     bootstrap_python_package module returns the string "some_variable_to_test".
 
     Raises
