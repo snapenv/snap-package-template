@@ -1,6 +1,5 @@
 [![Open in Dev Containers](https://img.shields.io/static/v1?label=Dev%20Containers&message=Open&color=blue&logo=visualstudiocode)](https://vscode.dev/redirect?url=vscode://ms-vscode-remote.remote-containers/cloneInVolume?url=https://github.com/snapenv/snap-package-template) [![Open in GitHub Codespaces](https://img.shields.io/static/v1?label=GitHub%20Codespaces&message=Open&color=blue&logo=github)](https://github.com/snapenv/snap-package-template)
 
-# bootstrap-python-package
 ![Static Badge](https://img.shields.io/badge/Python-33.11_%7C_3.12-blue?logo=python&logoColor=white)
 [![Stable Version](https://img.shields.io/pypi/v/bootstrap-python-package?color=blue)](https://pypi.org/project/bootstrap-python-package/)
 [![stability-beta](https://img.shields.io/badge/stability-beta-33bbff.svg)](https://github.com/mkenney/software-guides/blob/master/STABILITY-BADGES.md#beta)
@@ -16,7 +15,9 @@
 
 # 👖 SnapEnv template for Python package
 
-SnapEnv template for Python package is a Python package that offers:
+SnapEnv template for Python package.
+
+It was created having in mind SnapEnv people and what the most common use-cases would be. Following its structure you'll get into developing your next FastAPI server in no time!
 
 - a configuration module made using pydantic-settings
 - a handful of Pydantic schemas to make your life as a programmer easier
@@ -36,9 +37,6 @@ SnapEnv template for Python package is a Python package that offers:
 ### Quick links
 
 1. [Installing](#installing)
-2. [Predicting quantiles](#predicting-quantiles)
-3. [Predicting intervals](#predicting-intervals)
-4. [Forecasting time series](#forecasting-time-series)
 
 ### Installing
 
@@ -50,76 +48,62 @@ poetry add snap-package-template
 pip install snap-package-template
 ```
 
-This template repository provides the boilerplate to create a python package.
-It is configured with all the following features:
+## Contributing
 
-* Test suite using [tox](https://tox.wiki/en/latest/index.html) and [pytest](https://docs.pytest.org/en/7.4.x/)
-* Typing using [mypy](https://mypy.readthedocs.io/en/stable/)
-* Linting, security and code format using [ruff](https://github.com/astral-sh/ruff) (using [black](https://pypi.org/project/black/)
-  code style and [bandit](https://github.com/PyCQA/bandit) security rules)
-* Integration with CodeClimate for code quality and coverage checks
-* CI pipeline supporting:
-    * testing against multiple python versions
-    * releases on [PyPI](https://pypi.org)
-    * GitHub pages documentation using [mkdocs](https://www.mkdocs.org)
-* PyCharm profile basic configuration
+/// details | Prerequisites
+1. Set up Git to use SSH
+    1. [Generate an SSH key](https://docs.github.com/en/authentication/connecting-to-github-with-ssh/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent#generating-a-new-ssh-key) and [add the SSH key to your GitHub account](https://docs.github.com/en/authentication/connecting-to-github-with-ssh/adding-a-new-ssh-key-to-your-github-account).
 
-## How to use this repository template to create a new package
+    2. Configure SSH to automatically load your SSH keys:
+        ```sh
+        cat << EOF >> ~/.ssh/config
+        
+        Host *
+          AddKeysToAgent yes
+          IgnoreUnknown UseKeychain
+          UseKeychain yes
+          ForwardAgent yes
+        EOF
+        ```
 
-* Create your github repository using this template. (The big green `Use this template` button)
-* Rename the `bootstrap_python_package` directory
-* Search and replace all the occurrences of `bootstrap-python-package` and `bootstrap_python_package`
-* Configure a pending trusted publisher on [pypi](https://pypi.org/manage/account/publishing) using the following values:
-    * PyPI Project Name: The github repository name (in this case `bootstrap-python-package`)
-    * Owner: The github repository owner (in this case `febus982`)
-    * Repository name: The github repository name (in this case `bootstrap-python-package`)
-    * Workflow name: `release.yml`
-* Create a GitHub Actions secret named `CODECLIMATE_REPORTER_ID` (at URL `https://github.com/GITHUB_NAME_OR_ORGANIZATION/GITHUB_REPOSITORY/settings/secrets/actions`)
-  containing the codeclimate reporter id (you can find it at `https://codeclimate.com/repos/YOUR_REPO_ID/settings/test_reporter`).
-  If you don't want to use CodeClimate just delete `workflows/python-quality.yml`.
-* Update the badges in `README.md`! (check [shields.io](https://shields.io/) for extra badges)
-* Update the PyCharm Copyright profile in the IDE settings: Editor | Copyright | Copyright Profiles (if you want to use it)
-* Setup local development:
-    * Clone the repository
-    * Install poetry `pip install poetry`
-    * Install dev dependencies with `make dev-dependencies`
-    * (optional) It is strongly recommended to install [pre-commit](https://pre-commit.com/#installation)
-      and run `pre-commit install` so that formatting and linting are automatically executed during `git commit`.
-* Setup GitHub pages (this need local development setup):
-    * Initialise documentation branch `poetry run mike deploy dev latest --update-aliases --push`
-    * Configure GitHub Pages to deploy from the `gh-pages` branch (at URL `https://github.com/GITHUB_NAME_OR_ORGANIZATION/GITHUB_REPOSITORY/settings/pages`)
-    * Add the `main` branch and the `v*.*.*` tag rules to the "deployment branches and tags" list in the `gh-pages` environment (at URL `https://github.com/GITHUB_NAME_OR_ORGANIZATION/GITHUB_REPOSITORY/settings/environments`)
+2. [Install Docker Desktop](https://www.docker.com/get-started).
+    - _Linux only_:
+        - Export your user's user id and group id so that [files created in the Dev Container are owned by your user](https://github.com/moby/moby/issues/3206):
+            ```sh
+            cat << EOF >> ~/.bashrc
+            
+            export UID=$(id --user)
+            export GID=$(id --group)
+            EOF
+            ```
 
-**IMPORTANT:** The repository is configured to deploy on the [test PyPI repository](https://test.pypi.org/).
-It's strongly recommended to create the project in the [test PyPI repository](https://test.pypi.org/) and test
-the deployment pipeline. When you're happy with the result, create the project on the official [PyPI repository](https://pypi.org/)
-and remove the marked lines in `workflows/release.yml`.
+3. Install VS Code or PyCharm
+    1. [Install VS Code](https://code.visualstudio.com/) and [VS Code's Dev Containers extension](https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.remote-containers). Alternatively, install [PyCharm](https://www.jetbrains.com/pycharm/download/).
+    2. _Optional:_ install a [Nerd Font](https://www.nerdfonts.com/font-downloads) such as [FiraCode Nerd Font](https://github.com/ryanoasis/nerd-fonts/tree/master/patched-fonts/FiraCode) and [configure VS Code](https://github.com/tonsky/FiraCode/wiki/VS-Code-Instructions) or [configure PyCharm](https://github.com/tonsky/FiraCode/wiki/Intellij-products-instructions) to use it.
 
-## Package release
+///
 
-This setup uses [poetry-dynamic-versioning](https://github.com/mtkennerly/poetry-dynamic-versioning).
-This means it's not necessary to commit the version in the code but the CI pipeline
-will infer it from the git tag.
+/// details | Development environments
 
-To release a new version, just create a new release and tag in the GitHub repository, to:
+The following development environments are supported:
 
-* Build and deploy the python package to PyPI
-* Build and deploy a new version of the documentation to GitHub pages
+1. ⭐️ _GitHub Codespaces_: click on _Code_ and select _Create codespace_ to start a Dev Container with [GitHub Codespaces](https://github.com/features/codespaces).
+1. ⭐️ _Dev Container (with container volume)_: click on [Open in Dev Containers](https://vscode.dev/redirect?url=vscode://ms-vscode-remote.remote-containers/cloneInVolume?url=https://github.com/snapenv/snap-backend-template) to clone this repository in a container volume and create a Dev Container with VS Code.
+1. _Dev Container_: clone this repository, open it with VS Code, and run <kbd>Ctrl/⌘</kbd> + <kbd>⇧</kbd> + <kbd>P</kbd> → _Dev Containers: Reopen in Container_.
+1. _PyCharm_: clone this repository, open it with PyCharm, and [configure Docker Compose as a remote interpreter](https://www.jetbrains.com/help/pycharm/using-docker-compose-as-a-remote-interpreter.html#docker-compose-remote) with the `dev` service.
+1. _Terminal_: clone this repository, open it with your terminal, and run `docker compose up --detach dev` to start a Dev Container in the background, and then run `docker compose exec dev zsh` to open a shell prompt in the Dev Container.
 
-**IMPORTANT:** The default configuration requires the release name and the tag to follow
-the convention `vX.X.X` (semantic versioning preceded by lowercase `v`). It will publish
-the correct version on Pypi, omitting the `v` (ie. `v1.0.0` will publish `1.0.0`).
+///
 
-This format can be customized, refer to [poetry-dynamic-versioning docs](https://github.com/mtkennerly/poetry-dynamic-versioning)
+/// details | Developing
 
-## Commands for development
+- This project follows the [Conventional Commits](https://www.conventionalcommits.org/) standard to automate [Semantic Versioning](https://semver.org/) and [Keep A Changelog](https://keepachangelog.com/) with [Commitizen](https://github.com/commitizen-tools/commitizen).
+- Run `poe` from within the development environment to print a list of [Poe the Poet](https://github.com/nat-n/poethepoet) tasks available to run on this project.
+- Run `poetry add {package}` from within the development environment to install a run time dependency and add it to `pyproject.toml` and `poetry.lock`. Add `--group test` or `--group dev` to install a CI or development dependency, respectively.
+- Run `poetry update` from within the development environment to upgrade all dependencies to the latest versions allowed by `pyproject.toml`.
+- Run `poe docs`, `poe lint` and `ENVIRONMENT=dev poe test` before any commit, or your git push can fail. `poe docs` generate any new documentation for changes/additions in the python modules.
+- Run `cz --name cz_gitmoji commit` to commit files using conventional commits with emojis.
+- Run `cz --name cz_gitmoji bump --changelog` to bump the package's version, update the `CHANGELOG.md`, and create a git tag.
+- Run `git push --tags` to push the new tag to github.
 
-All the common commands used during development can be run using make targets:
-
-* `make dev-dependencies`: Install dev requirements
-* `make update-dependencies`: Update dev requirements
-* `make fix`: Run code style and lint automatic fixes (where possible)
-* `make test`: Run test suite against system python version
-* `make check`: Run tests against all available python versions, code style and lint checks
-* `make type`, `make format`, `make lint`, `make bandit`: Run the relevant check
-* `make docs`: Render the mkdocs website locally
+///
