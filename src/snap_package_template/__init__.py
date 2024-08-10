@@ -2,7 +2,7 @@
 Snap Package Template.
 
 This is a template for the Snap Python package, designed for easy starting and
-structuring of Python projects. This package includes basic versioning and a 
+structuring of Python projects. This package includes basic versioning and a
 simple function example.
 
 Attributes
