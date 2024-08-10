@@ -1,5 +1,7 @@
+[![Open in Dev Containers](https://img.shields.io/static/v1?label=Dev%20Containers&message=Open&color=blue&logo=visualstudiocode)](https://vscode.dev/redirect?url=vscode://ms-vscode-remote.remote-containers/cloneInVolume?url=https://github.com/snapenv/snap-package-template) [![Open in GitHub Codespaces](https://img.shields.io/static/v1?label=GitHub%20Codespaces&message=Open&color=blue&logo=github)](https://github.com/snapenv/snap-package-template)
+
 # bootstrap-python-package
-![Static Badge](https://img.shields.io/badge/Python-3.8_%7C_3.9_%7C_3.10_%7C_3.11_%7C_3.12-blue?logo=python&logoColor=white)
+![Static Badge](https://img.shields.io/badge/Python-33.11_%7C_3.12-blue?logo=python&logoColor=white)
 [![Stable Version](https://img.shields.io/pypi/v/bootstrap-python-package?color=blue)](https://pypi.org/project/bootstrap-python-package/)
 [![stability-beta](https://img.shields.io/badge/stability-beta-33bbff.svg)](https://github.com/mkenney/software-guides/blob/master/STABILITY-BADGES.md#beta)
 
@@ -11,6 +13,42 @@
 [![Ruff](https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/charliermarsh/ruff/main/assets/badge/v1.json)](https://github.com/charliermarsh/ruff)
 [![Code style: black](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/psf/black)
 [![security: bandit](https://img.shields.io/badge/security-bandit-yellow.svg)](https://github.com/PyCQA/bandit)
+
+# 👖 SnapEnv template for Python package
+
+SnapEnv template for Python package is a Python package that offers:
+
+- a configuration module made using pydantic-settings
+- a handful of Pydantic schemas to make your life as a programmer easier
+
+## Features
+
+1. 🍬 *Sklearn meta-estimator*: add conformal prediction of quantiles and intervals to any scikit-learn regressor
+2. 🔮 *Darts forecaster:* add conformally calibrated probabilistic forecasting to any scikit-learn regressor
+3. 🌡️ *Conformally calibrated:* accurate quantiles, and intervals with reliable [coverage](https://en.wikipedia.org/wiki/Coverage_probability)
+4. 🚦 *Coherent quantiles:* quantiles increase monotonically instead of [crossing](https://github.com/dmlc/xgboost/issues/9848) [each other](https://github.com/microsoft/LightGBM/issues/3447)
+5. 👖 *Tight quantiles:* selects the lowest [dispersion](https://en.wikipedia.org/wiki/Statistical_dispersion) that provides the desired coverage
+6. 🎁 *Data efficient:* requires only a small number of calibration examples to fit
+7. 🐼 *Pandas support:* optionally predict on DataFrames and receive DataFrame output
+
+## Using
+
+### Quick links
+
+1. [Installing](#installing)
+2. [Predicting quantiles](#predicting-quantiles)
+3. [Predicting intervals](#predicting-intervals)
+4. [Forecasting time series](#forecasting-time-series)
+
+### Installing
+
+```sh
+poetry add snap-package-template
+```
+
+```sh
+pip install snap-package-template
+```
 
 This template repository provides the boilerplate to create a python package.
 It is configured with all the following features:
