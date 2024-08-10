@@ -1,64 +1,71 @@
-# ==============================================================================
-#  Copyright (c) 2024 Federico Busetti                                         =
-#  <729029+febus982@users.noreply.github.com>                                  =
-#                                                                              =
-#  Permission is hereby granted, free of charge, to any person obtaining a     =
-#  copy of this software and associated documentation files (the "Software"),  =
-#  to deal in the Software without restriction, including without limitation   =
-#  the rights to use, copy, modify, merge, publish, distribute, sublicense,    =
-#  and/or sell copies of the Software, and to permit persons to whom the       =
-#  Software is furnished to do so, subject to the following conditions:        =
-#                                                                              =
-#  The above copyright notice and this permission notice shall be included in  =
-#  all copies or substantial portions of the Software.                         =
-#                                                                              =
-#  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR  =
-#  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,    =
-#  FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL     =
-#  THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER  =
-#  LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING     =
-#  FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER         =
-#  DEALINGS IN THE SOFTWARE.                                                   =
-# ==============================================================================
+"""
+Generate code reference pages and navigation.
 
-#
-#  Permission is hereby granted, free of charge, to any person obtaining a
-#  copy of this software and associated documentation files (the "Software"),
-#  to deal in the Software without restriction, including without limitation
-#  the rights to use, copy, modify, merge, publish, distribute, sublicense,
-#  and/or sell copies of the Software, and to permit persons to whom the
-#  Software is furnished to do so, subject to the following conditions:
-#
-#
-# -----------------------------------------------------#
-#                   Library imports                    #
-# -----------------------------------------------------#
+This script generates documentation pages and navigation for Python source
+files using mkdocs and mkdocstrings. It iterates over each Python file in
+the specified source directory, handles edge cases for `__init__` and `__main__`
+modules, and writes the documentation in Markdown format.
+
+The script is based on a recipe from mkdocstrings and credits are given to
+Timothée Mazzucotelli and the mkdocstrings community.
+
+Attributes
+----------
+src_dir : str
+    The relative path to the source code directory.
+nav_pages_path : str
+    The folder where generated pages will be grouped in the navigation.
+
+Notes
+-----
+The above copyright notice and this permission notice shall be included in
+all copies or substantial portions of the Software.
+
+License
+-------
+Permission is hereby granted, free of charge, to any person obtaining a
+copy of this software and associated documentation files (the "Software"),
+to deal in the Software without restriction, including without limitation
+the rights to use, copy, modify, merge, publish, distribute, sublicense,
+and/or sell copies of the Software, and to permit persons to whom the
+Software is furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in
+all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL
+THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
+DEALINGS IN THE SOFTWARE.
+
+Copyright (c) 2024 Federico Busetti
+<729029+febus982@users.noreply.github.com>
+==============================================================================
+"""
+
 from pathlib import Path
 
 import mkdocs_gen_files
 
-# -----------------------------------------------------#
-#                    Configuration                     #
-# -----------------------------------------------------#
 # Package source code relative path
 src_dir = "src"
 # Generated pages will be grouped in this nav folder
 nav_pages_path = "API-Reference"
 
 
-# -----------------------------------------------------#
-#                       Runner                         #
-# -----------------------------------------------------#
-""" Generate code reference pages and navigation
+# Generate code reference pages and navigation
+#
+#    Based on the recipe of mkdocstrings:
+#    https://github.com/mkdocstrings/mkdocstrings
+#    https://github.com/mkdocstrings/mkdocstrings/issues/389#issuecomment-1100735216
+#
+#    Credits:
+#    Timothée Mazzucotelli
+#    https://github.com/pawamoy
 
-    Based on the recipe of mkdocstrings:
-    https://github.com/mkdocstrings/mkdocstrings
-    https://github.com/mkdocstrings/mkdocstrings/issues/389#issuecomment-1100735216
-
-    Credits:
-    Timothée Mazzucotelli
-    https://github.com/pawamoy
-"""
 # Iterate over each Python file
 for path in sorted(Path(src_dir).rglob("*.py")):
     # Get path in module, documentation and absolute

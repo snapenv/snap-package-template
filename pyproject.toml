@@ -32,6 +32,10 @@ pytest-mock = ">=3.14.0"
 pytest-xdist = ">=3.5.0"
 ruff = ">=0.3.5"
 cz-conventional-gitmoji = "^0.3.3"
+pytest-asyncio = "^0.23.8"
+pytest-cov = "^5.0.0"
+pytest-factoryboy = "^2.7.0"
+anyio = "^4.4.0"
 
 [tool.poetry.group.dev.dependencies]  # https://python-poetry.org/docs/master/managing-dependencies/
 ipykernel = ">=6.29.4"
@@ -73,6 +77,7 @@ show_error_context = true
 warn_unreachable = true
 
 [tool.pytest.ini_options]  # https://docs.pytest.org/en/latest/reference/reference.html#ini-options-ref
+asyncio_mode = "auto"
 addopts = "--color=yes --doctest-modules --exitfirst --failed-first --verbosity=2 --junitxml=reports/pytest.xml"
 testpaths = ["src", "tests"]
 xfail_strict = true
