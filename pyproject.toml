@@ -5,7 +5,7 @@ build-backend = "poetry.core.masonry.api"
 [tool.poetry]  # https://python-poetry.org/docs/pyproject/
 name = "snap-package-template"
 version = "0.0.0"
-description = "SnapEnv template for Python package."
+description = "Awesome snap_package_template created by snapenv"
 authors = ["Abner G Jacobsen <abner@apoana.com.br>"]
 readme = "README.md"
 repository = "https://github.com/snapenv/snap-package-template"

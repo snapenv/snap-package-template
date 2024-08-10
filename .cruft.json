@@ -6,7 +6,7 @@
     "cookiecutter": {
       "project_type": "package",
       "project_name": "Snap Package Template",
-      "project_description": "SnapEnv template for Python package.",
+      "project_description": "Awesome snap_package_template created by snapenv",
       "project_url": "https://github.com/snapenv/snap-package-template",
       "author_name": "Abner G Jacobsen",
       "author_email": "abner@apoana.com.br",
